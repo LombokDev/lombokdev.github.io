@@ -42,14 +42,10 @@ body {
   padding-top: 50px;
 }
 .speaker-container {
+  height: 220px;
   padding-top: 50px;
   width: 25%;
   float: left;
-  text-align: center;
-}
-.speaker-container-unidentified {
-  padding-top: 300px;
-  padding-bottom: 70px;
   text-align: center;
 }
 .speaker-avatar {
@@ -70,10 +66,12 @@ body {
   font-style: italic;
 }
 .gambar-pemanis {
+  clear: left;
   float: left;
   width: 20%;
 }
 .gambar-pemanis img {
+  color: grey !important;
   width: 100%;
 }
 .moderators {
