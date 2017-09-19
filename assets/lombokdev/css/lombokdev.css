@@ -12,13 +12,17 @@ body {
 }
 
 .page-header{
-    font-size: 18px;
+    font-size: 14px;
     margin-left: 35px;
 }
 
 .text-center{
     text-align: center;
     padding: auto;
+}
+
+.card{
+    height: 450px;
 }
 .content-container {
   padding-top:50px;
