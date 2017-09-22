@@ -21,14 +21,24 @@ body {
     margin-left: 35px;
 }
 
-.text-center{
+.text-center {
     text-align: center;
     padding: auto;
 }
 
-.card{
-    height: 500px;
+.d-flex {
+  display: flex;
+  flex-wrap: wrap;
 }
+
+.col.d-flex {
+  flex-grow: 1;
+}
+
+.card {
+  width: 100%;
+}
+
 .content-container {
   padding-top:50px;
   margin:0 auto;
