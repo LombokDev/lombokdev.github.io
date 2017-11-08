@@ -1,49 +1,24 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>Lombok Dev Meetup</title>
+	<title>Lombok Dev Meetup</title>
     <link rel="icon" type="image/png" href="assets/lombokdev/images/favicon-32x32.png">
     <meta name="description" content="Lombok Dev Meetup adalah event yang diselenggarakan oleh dan/atau untuk masyarakat Lombok untuk berbagi dan berkolaborasi
     tentang inspirasi, ilmu dan teknologi baru di dunia IT, open source, pengembangan perangkat lunak, sysadmin dan bidang
     terkait.">
     <meta name="author" content="Lombok Dev">
     <link rel="canonical" href="https://lombokdevmeetup.github.io" />
-
-    <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="assets/materialize/css/materialize.min.css" media="screen,projection" />
-    <link type="text/css" rel="stylesheet" href="assets/lombokdev/css/lombokdev.css" media="screen,projection" />
-    <link type="text/css" rel="stylesheet" href="assets/lombokdev/css/fork.min.css" media="screen,projection" />
-
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Open Graph and twitter card -->
-    <!-- Debug:
-        https://developers.facebook.com/tools/debug/sharing/ 
-        https://cards-dev.twitter.com/validator
-    -->
-    <meta itemprop="name" content="Lombok Dev Meetup">
-    <meta property="og:title" content="Lombok Dev Meetup: Tech talks pertama di Lombok" />
-    <meta property="og:description" content="Lombok Dev Meetup adalah event yang diselenggarakan oleh dan/atau untuk masyarakat Lombok untuk berbagi dan berkolaborasi
-    tentang inspirasi, ilmu dan teknologi baru di dunia IT, open source, pengembangan perangkat lunak, sysadmin dan bidang
-    terkait." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://lombokdevmeetup.github.io" />
-    <meta property="og:image" content="https://lombokdevmeetup.github.io/assets/lombokdev/images/lombokdev-meetup-cover.png"
-    />
-    <meta property="og:image:alt" content="Lombokdev Meetup" />
-    <meta property="og:locale" content="id_ID" />
-    <meta property='og:locale:alternate' content='en_US' />
-    <meta content='summary_large_image' name='twitter:card' />
-
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/lombokdev/css/style.css">
+	<link rel="stylesheet" type="text/css" href="assets/lombokdev/css/fork.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/lombokdev/lombokdev.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+		rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-
 <body>
-
-    <div class="fork-me-wrapper">
+	
+	<div class="fork-me-wrapper">
         <div class="fork-me">
             <a class="fork-me-link" href="https://github.com/LombokDevMeetup/lombokdevmeetup.github.io">
                   <span class="fork-me-text">Fork US On GitHub</span>
@@ -51,225 +26,170 @@
         </div>
     </div>
 
-    <div class="container">
-        <img src="assets/lombokdev/images/lombokdevmeetup-logo.png" alt="" class="responsive-img hide-on-med-and-up">
-        <div class="row valign-wrapper">
+	<div class="navbar-fixed">
+		<nav class="custom-nav">
+			<div class="nav-wrapper ">
+				<div class="container">
+					<!-- <a href="#!" class="brand-logo">
+						<img class="logo" src="img/lombokdevmeetup-logo.png" alt="">
+					</a> -->
+					<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+					<ul class="hide-on-med-and-down custom-section">
+						<li><a href="#home">Home</a></li>
+						<li><a href="#about">About</a></li>
+						<li><a href="#upcoming-event">Upcoming Event</a></li>
+						<li><a href="#">Gallery</a></li>
+						<li><a href="past-event.html">Past Event</a></li>
+					</ul>
+					<ul class="side-nav" id="mobile-demo">
+						<li><a href="#home">Home</a></li>
+						<li><a href="#about">About</a></li>
+						<li><a href="#upcoming-event">Upcoming Event</a></li>
+						<li><a href="#">Gallery</a></li>
+						<li><a href="past-event.html">Past Event</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</div>
 
-            <div class="col s12 l6 hide-on-small-and-down">
+	<div class="section" id="home">
+		<div class="slider ">
+		    <ul class="slides">
+		      <li>
+		        <img src="assets/lombokdev/images/1.JPG">
+		      </li>
+		      <li>
+		        <img src="assets/lombokdev/images/KECE2608.JPG">
+		        
+		      </li>
+		      <li>
+		        <img src="assets/lombokdev/images/KECE2624.JPG">
+		        
+		      </li>
+		      <li>
+		        <img src="assets/lombokdev/images/KECE2639.JPG">
+		        
+		      </li>
+		      <li>
+		        <img src="assets/lombokdev/images/KECE2642.JPG">
+		        
+		      </li>
+		      <li>
+		        <img src="assets/lombokdev/images/KECE2552.JPG">
+		        
+		      </li>
+		      <li>
+		        <img src="assets/lombokdev/images/KECE2663.JPG">
+		        
+		      </li>
+		    </ul>
+		  </div>
+	</div>
 
-                <img src="assets/lombokdev/images/lombokdevmeetup-logo.png" alt="logo" class="responsive-img">
-            </div>
+	<div class="container">
+		<div class="section col s12 m12" id="about">
 
-            <div class="col s12 l6">
+			<h4 class="center section-title">About LombokDev Meetup</h4>
+			<p class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo reprehenderit quae ipsam sunt illum sint officiis voluptatibus magni dicta est, quasi repudiandae animi earum porro mollitia magnam minima suscipit, soluta voluptates nisi. A iusto quam ipsam accusamus, placeat vel quo enim illum, nam amet voluptatibus saepe commodi dignissimos et harum porro laboriosam dolores. Fuga hic amet excepturi odit pariatur. </p>
 
-                <p>
-                    Pertemuan sebelumnya: Minggu, 15 Oktober 2017<br> Pukul 09.00 WITA sampai selesai<br> @ Cafe Soetjipto <a href="https://goo.gl/maps/2QdLZCztL842">https://goo.gl/maps/2QdLZCztL842</a>
-                    <br><br>
-                    10 <i>lightning tech talks</i> untuk:<br> pelajar, mahasiswa, <i>developer</i>, <i>programmer</i>,<br> <i>engineer</i>, <i>sysadmin</i> dan
-                    profesi terkait.<br>
-                    <br />
-                    <b>Pendaftaran telah ditutup. <a href="https://t.me/joinchat/DOd16gouOsej61PeR8vU6A" target="_blank">Ingin acara ini tetap berlanjut? Mari berdiskusi dan berkolaborasi!</a></b>
-                    <!--a href="https://goo.gl/forms/6i7k1bkiFujGZgh23" target="_blank" class="waves-effect waves-light btn-large red darken-2"><i class="material-icons left">assignment</i>Daftar sekarang!</a><br><small class="red-text">Buruan! peserta terbatas!</small-->
-                    <br><br>Foto-foto terkait pertemuan ini dapat <a href="https://www.flickr.com/photos/153109021@N05/sets/72157687168633051">dilihat di sini</a>
-                </p>
-            </div>
+		</div>
 
-        </div>
-
-        <div class="row">
-            <div class="col s12 m12 text-center">
-                <a href="https://www.facebook.com/groups/637288823062993/" target="_blank"><img src="assets/lombokdev/images/facebook-with-circle.svg" width="32"></a>&nbsp;&nbsp;
-                <a href="https://t.me/joinchat/DOd16gouOsej61PeR8vU6A" target="_blank"><img src="assets/lombokdev/images/telegram-with-circle.svg" width="32"></a>&nbsp;&nbsp;
-                <a href="https://github.com/lombokdevmeetup" target="_blank"><img src="assets/lombokdev/images/github-with-circle.svg" width="32"></a>
-            </div>
-        </div>
-
-        <div class="row">
-
-            <div class="col s12 m12 main-title">
-                <h4 class="red-text text-center"> Yang Telah Berbagi </h4>
-            </div>
-
-        </div>
-
-        <div class="row d-flex">
-            <div class="col s12 m6 l4 d-flex">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="assets/lombokdev/images/rizky.jpg">
-                        <span class="card-title red-text darken-4"></span>
-                    </div>
-                    <div class="card-content">
-                        <h5>Rizky Ariestiyansyah</h5>
-                        <p>Ngoprek Realitas Maya di Web (Web Virtual Reality)</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col s12 m6 l4 d-flex">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="assets/lombokdev/images/eby.jpg">
-                        <span class="card-title red-text darken-4"></span>
-                    </div>
-                    <div class="card-content">
-                        <h5>Eby Sofyan</h5>
-                        <p>Android Devs, 5 Menit Mesra Bersama Kotlin</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col s12 m6 l4 d-flex">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="assets/lombokdev/images/marlintika.jpg">
-                        <span class="card-title red-text darken-4"></span>
-                    </div>
-                    <div class="card-content">
-                        <h5>Marlintika</h5>
-                        <p>Women in Tech, Why Not?</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col s12 m6 l4 d-flex">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="assets/lombokdev/images/piko.jpg">
-                        <span class="card-title red-text darken-4"></span>
-                    </div>
-                    <div class="card-content">
-                        <h5>Herpiko Dwi Aguno</h5>
-                        <p>Revolusi Kultur DevOps</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col s12 m6 l4 d-flex">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="assets/lombokdev/images/hayi.jpg">
-                        <span class="card-title red-text darken-4"></span>
-                    </div>
-                    <div class="card-content">
-                        <h5>Hayi Nukman</h5>
-                        <p>Menjadi QA Engineer</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col s12 m6 l4 d-flex">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="assets/lombokdev/images/deni.jpg">
-                        <span class="card-title red-text darken-4"></span>
-                    </div>
-                    <div class="card-content">
-                        <h5>Deni Marswandi</h5>
-                        <p>Membangun Microservice dengan Golang</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col s12 m6 l4 d-flex">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="assets/lombokdev/images/fandi.jpg">
-                        <span class="card-title red-text darken-4"></span>
-                    </div>
-                    <div class="card-content">
-                        <h5>Lalu Erfandi Maulana Yusnu</h5>
-                        <p>Tensorflow dan Tebak Gambar Bersama Komputer</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col s12 m6 l4 d-flex">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="assets/lombokdev/images/hadi-wijaya.png">
-                        <span class="card-title red-text darken-4"></span>
-                    </div>
-                    <div class="card-content">
-                        <h5>Hadi Wijaya</h5>
-                        <p>Berajah Pinak Web Kadu Base Sasak</p>
-                    </div>
-                </div>
-            </div>
+		<div class="section col s12 m12" id="upcoming-event">
+			<h4 class="center section-title">Upcoming Event</h4>
+			<p class="content">Tech Talk. This event will be held on December 3, 2017 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et voluptates doloribus, mollitia voluptatem sint deserunt? Quod ratione, quis! Placeat iste debitis dolorum libero tempora optio?</p>
+			<div class="row">
+				<div class="col s12 m4">
+					<div class="speaker">
+						<div class="speaker-image">
+							<img src="assets/lombokdev/images/entrepreneur-startup-start-up-man-39866 (1).jpeg" alt="">
+						</div>
+						<div class="overlay">
+						    <div class="social">
+						    	<a href="http://www.facebook.com/">
+						    		<img src="assets/lombokdev/images/facebook-logo-button.png" alt="">
+						    	</a>
+						    	<a href="https://github.com/">
+						    		<img src="assets/lombokdev/images/github.png" alt="">
+						    	</a>
+						    	<a href="https://www.linkedin.com/">
+						    		<img src="assets/lombokdev/images/linkedin-logo-button.png" alt="">
+						    	</a>
+						    </div>
+						</div>
+					</div>
+					<div class="speaker-desc">
+						<div class="speaker-title">
+							<h4>Subhan Nizar</h4>
+							<p>GIS with React.js</p>
+						</div>
+					</div>
+				</div>
+				<div class="col s12 m4">
+					<div class="speaker">
+						<div class="speaker-image">
+							<img src="assets/lombokdev/images/pexels-photo-220453.jpeg" alt="">
+						</div>
+						<div class="overlay">
+						    <div class="social">
+						    	<a href="http://www.facebook.com/">
+						    		<img src="assets/lombokdev/images/facebook-logo-button.png" alt="">
+						    	</a>
+						    	<a href="https://github.com/">
+						    		<img src="assets/lombokdev/images/github.png" alt="">
+						    	</a>
+						    	<a href="https://www.linkedin.com/">
+						    		<img src="assets/lombokdev/images/linkedin-logo-button.png" alt="">
+						    	</a>
+						    </div>
+						</div>
+					</div>
+					<div class="speaker-desc">
+						<div class="speaker-title">
+							<h4>M. Nasrul Alawy</h4>
+							<p>Game development - "Get Started & How To"</p>
+						</div>
+					</div>
+				</div>
+				<div class="col s12 m4">
+					<div class="speaker">
+						<div class="speaker-image">
+							<img src="assets/lombokdev/images/pexels-photo-91227.jpeg" alt="">
+						</div>
+						<div class="overlay">
+						    <div class="social">
+						    	<a href="http://www.facebook.com/">
+						    		<img src="assets/lombokdev/images/facebook-logo-button.png" alt="">
+						    	</a>
+						    	<a href="https://github.com/">
+						    		<img src="assets/lombokdev/images/github.png" alt="">
+						    	</a>
+						    	<a href="https://www.linkedin.com/">
+						    		<img src="assets/lombokdev/images/linkedin-logo-button.png" alt="">
+						    	</a>
+						    </div>
+						</div>
+					</div>
+					<div class="speaker-desc">
+						<div class="speaker-title">
+							<h4>Syamsul Muttaqin</h4>
+							<p>Taklukan SEO dengan Semantic Web</p>
+						</div>
+					</div>
+				</div>
+				<div class="col s12 m2 offset-m5">
+					<a class="waves-effect waves-light btn" href="third-meetup.html">See More</a>
+				</div>
+			</div>
+			<h4 class="subtitle center">Sponsor</h4>
+		</div>
 
 
-            <div class="col s12 m6 l4 d-flex">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="assets/lombokdev/images/sapto.jpg">
-                        <span class="card-title red-text darken-4"></span>
-                    </div>
-                    <div class="card-content">
-                        <h5>Dr. Sapto Sutardi</h5>
-                        <p>Bagaimana Tidur Teratur Sebagai Pemrogram</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m6 l4 d-flex">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="assets/lombokdev/images/nino.jpg">
-                        <span class="card-title red-text darken-4"></span>
-                    </div>
-                    <div class="card-content">
-                        <h5>Nino<br></h5>
-                        <p>Pengenalan Swift</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m6 l4 d-flex">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="assets/lombokdev/images/dayat.jpg">
-                        <span class="card-title red-text darken-4"></span>
-                    </div>
-                    <div class="card-content">
-                        <h5>Dayat<br></h5>
-                        <p>REST API</p>
-                    </div>
-                </div>
-            </div>
 
-            <div class="col s12 m6 l4 d-flex">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="assets/lombokdev/images/saeful-bahri.jpg">
-                        <span class="card-title red-text darken-4"></span>
-                    </div>
-                    <div class="card-content">
-                        <h5>Saeful Bahri</h5>
-                        <p>Moderator</p>
-                    </div>
-                </div>
-            </div>
+	</div>
 
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="row">
-            <div class="col lg12 s12">
-                <h4 class="red-text text-center">Sponsor</h4>
-            </div>
-            <div class="col l12 s12 text-center">
-                <img src="assets/lombokdev/images/itec-logo.png" width="300" class="responsive-img">
-                <p class="grey-text text-lighten-4">.</p>
-            </div>
-            <div class="col l12 s12 text-center">
-                <img src="assets/lombokdev/images/fc-logo.png" width="300" class="responsive-img">
-                <p class="grey-text text-lighten-4">.</p>
-            </div>
-
-        </div>
-    </div>
-
-    <footer class="page-footer grey lighten-2">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.3131560282272!2d116.08404931528578!3d-8.565856689258132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dcdc05faeda82e9%3A0x2882bcda643adddb!2sSoetjipto+Coffee+and+Resto!5e0!3m2!1sen!2sid!4v1507466433244" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+	<div class="footer"></div>
+	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.3131560282272!2d116.08404931528578!3d-8.565856689258132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dcdc05faeda82e9%3A0x2882bcda643adddb!2sSoetjipto+Coffee+and+Resto!5e0!3m2!1sen!2sid!4v1507466433244" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 
         <div class="footer-copyright">
             <div class="container">
@@ -284,9 +204,55 @@
             </div>
         </div>
     </footer>
-    <!--Import jQuery before materialize.js-->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="assets/materialize/js/materialize.min.js"></script>
-</body>
 
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+	<script type="text/javascript" src="lombokdev/js/jquery.easing.1.3.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+		    $('.slider').slider({
+		    	height: '100%'
+		    });
+		    $(".button-collapse").sideNav();
+		    // $(".dropdown-button").dropdown({
+		    // 	hover:true,
+		    // 	alignment: left
+		    // });
+
+		    $(window).scroll(function() {
+		    	var scroll = $(window).scrollTop();
+		        if (scroll >= 60) {
+		            //console.log('a');
+		            $("nav").addClass("nav-bg");
+		            // $("nav").toggleClass("custom-nav");
+		            // $("nav").toggleClass("nav-bg");
+		        } else {
+		        	// $("nav").toggleClass("custom-nav");
+		        	$("nav").removeClass("nav-bg");
+		         //    $("nav").toggleClass("nav-bg");
+		        }
+		    });
+
+		    $(function() {
+		        $('.custom-section li a').bind('click',function(event){
+		            var $anchor = $(this);
+		            
+		            $('html, body').stop().animate({
+		                scrollTop: $($anchor.attr('href')).offset().top - 60
+		            }, 1500,'easeInOutExpo');
+		            /*
+		            if you don't want to use the easing effects:
+		            $('html, body').stop().animate({
+		                scrollTop: $($anchor.attr('href')).offset().top
+		            }, 1000);
+		            */
+		            event.preventDefault();
+		        });
+		    });
+		});
+		        
+		$(".button-collapse").sideNav();
+	</script>
+</body>
 </html>
