@@ -61,6 +61,8 @@ nav {
 	display: block;
 	width: 100%;
 	height: 360px;
+	position: relative;
+	object-fit: cover;
 }
 
 .overlay {
