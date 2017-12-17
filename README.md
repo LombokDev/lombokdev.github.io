@@ -1,1 +1,1 @@
-# lombokdevmeetup.github.io
+# lombokdev.github.io
