@@ -1,0 +1,26 @@
+# Carousel Configuration
+images:
+  - 'assets/lombokdev/partners/hayati-io.webp'
+  - 'assets/lombokdev/partners/linov.webp'
+  - 'assets/lombokdev/partners/lombok-ai.webp'
+  - 'assets/lombokdev/partners/lombok-android.webp'
+  - 'assets/lombokdev/partners/lombok-flutter.webp'
+  - 'assets/lombokdev/partners/lombok-js.webp'
+  - 'assets/lombokdev/partners/lombok-kotlin.webp'
+  - 'assets/lombokdev/partners/lombok-py.webp'
+  - 'assets/lombokdev/partners/loteng-dev.webp'
+  - 'assets/lombokdev/partners/lotim-dev.webp'
+  - 'assets/lombokdev/partners/petani-kode.webp'
+  - 'assets/lombokdev/partners/uxid-lombok.webp'
+
+# Optional captions for each image
+# captions:
+
+# Carousel settings
+settings:
+  autoplay: true
+  interval: 4000 # milliseconds
+  show_dots: true
+  show_arrows: true
+  show_counter: true
+  lazy_loading: true

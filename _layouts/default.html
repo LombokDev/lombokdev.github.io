@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,14 +9,14 @@
     <link rel="icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
     <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
-    
+
     <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
     <!-- Custom styles -->
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
     <link rel="stylesheet" href="{{ '/assets/css/animated-background.css' | relative_url }}">
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,21 +25,26 @@
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     {% endif %}
 </head>
-<body class="font-inter bg-white text-gray-900 antialiased">
-    {% include animated_bg.html %}
+
+<body class="font-inter text-gray-900 antialiased">
     {% include header.html %}
-    
-    <main>
-        {{ content }}
-    </main>
-    
-    <footer class="bg-gray-50 py-12">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <p class="text-gray-600">© {{ 'now' | date: "%Y" }} {{ site.title | split: ' |' | first }}. Built with Jekyll.</p>
-        </div>
-    </footer>
-    
-    <!-- Background Animation Script -->
-    <script src="{{ '/assets/js/background-animations.js' | relative_url }}"></script>
+    <div class="absolute h-screen inset-0 -z-1" id="pattern-1"> </div>
+
+    <div className="min-h-screen w-full bg-[#020617] relative">
+
+        <main>
+            {{ content }}
+        </main>
+
+        <footer class="bg-gray-50 py-12">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <p class="text-gray-600">© {{ 'now' | date: "%Y" }} {{ site.title | split: ' |' | first }}. Built with
+                    Jekyll.</p>
+            </div>
+        </footer>
+
+        <!-- Background Animation Script -->
+        <script src="{{ '/assets/js/background-animations.js' | relative_url }}"></script>
 </body>
+
 </html>

@@ -1,0 +1,83 @@
+<div class="overflow-hidden relative max-w-6xl mx-auto space-y-6 my-52">
+    <div class="absolute top-0 -left-10 pointer-events-none h-full w-20 bg-gradient-to-r from-white via-white to-transparent z-40"
+        aria-hidden="true"></div>
+    <div class="absolute top-0 -right-10 pointer-events-none h-full w-20 bg-gradient-to-l from-white via-white to-transparent z-40"
+        aria-hidden="true"></div>
+
+    <!-- Line 1 (arah kiri) -->
+    <div class="flex animate-marquee whitespace-nowrap">
+        {% assign carousel_images = include.images | default: site.data.carousel_partners.images %}
+        {% for image in carousel_images %}
+        <div class="flex-shrink-0 w-32 mx-4">
+            <div class="aspect-square border border-gray-100 flex items-center justify-center">
+                <img src="{{ '' | append: image | relative_url }}" alt="Carousel partner logo {{ forloop.index }}"
+                    class="w-full h-full object-contain" loading="lazy"
+                    onerror='this.parentElement.innerHTML=&apos;<div class="text-gray-400 text-center"><svg class="w-16 h-16 mx-auto mb-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"></path></svg><p>{{ image }}</p></div>&apos;' />
+            </div>
+        </div>
+        {% endfor %}
+
+        <!-- Duplicate biar looping mulus -->
+        {% for image in carousel_images %}
+        <div class="flex-shrink-0 w-32 mx-4">
+            <div class="aspect-square border border-gray-100 flex items-center justify-center">
+                <img src="{{ '' | append: image | relative_url }}"
+                    alt="Carousel partner logo duplicate {{ forloop.index }}" class="w-full h-full object-contain"
+                    loading="lazy" />
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Line 2 (arah kanan) -->
+    <div class="flex animate-marquee-reverse whitespace-nowrap">
+        {% for image in carousel_images %}
+        <div class="flex-shrink-0 w-32 mx-4">
+            <div class="aspect-square border border-gray-100 flex items-center justify-center">
+                <img src="{{ '' | append: image | relative_url }}" alt="Carousel partner logo {{ forloop.index }}"
+                    class="w-full h-full object-contain" loading="lazy" />
+            </div>
+        </div>
+        {% endfor %}
+
+        {% for image in carousel_images %}
+        <div class="flex-shrink-0 w-32 mx-4">
+            <div class="aspect-square border border-gray-100 flex items-center justify-center">
+                <img src="{{ '' | append: image | relative_url }}"
+                    alt="Carousel partner logo duplicate {{ forloop.index }}" class="w-full h-full object-contain"
+                    loading="lazy" />
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+    @keyframes marquee {
+        0% {
+            transform: translateX(0);
+        }
+
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+
+    @keyframes marquee-reverse {
+        0% {
+            transform: translateX(-100%);
+        }
+
+        100% {
+            transform: translateX(0);
+        }
+    }
+
+    .animate-marquee {
+        animation: marquee 20s linear infinite;
+    }
+
+    .animate-marquee-reverse {
+        animation: marquee-reverse 20s linear infinite;
+    }
+</style>

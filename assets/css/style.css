@@ -1,123 +1,191 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* this import just for tailwind intellisense usage */
+@import 'tailwindcss';
 
 /* Custom styles for the Jekyll portfolio */
 
 /* Font family */
 .font-inter {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
 }
 
 /* Smooth scrolling */
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 /* Custom animations */
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .fade-in-up {
-    animation: fadeInUp 0.6s ease-out forwards;
+  animation: fadeInUp 0.6s ease-out forwards;
 }
 
 /* Staggered animations for skill categories */
 .skill-category {
-    animation: fadeInUp 0.6s ease-out forwards;
+  animation: fadeInUp 0.6s ease-out forwards;
 }
 
-.skill-category:nth-child(1) { animation-delay: 0.1s; }
-.skill-category:nth-child(2) { animation-delay: 0.2s; }
-.skill-category:nth-child(3) { animation-delay: 0.3s; }
-.skill-category:nth-child(4) { animation-delay: 0.4s; }
+.skill-category:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.skill-category:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.skill-category:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.skill-category:nth-child(4) {
+  animation-delay: 0.4s;
+}
 
 /* Project cards hover effects */
 .project-card {
-    animation: fadeInUp 0.6s ease-out forwards;
+  animation: fadeInUp 0.6s ease-out forwards;
 }
 
 .project-card:hover {
-    transform: translateY(-2px);
+  transform: translateY(-2px);
 }
 
 /* Custom link styles */
 a {
-    transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 /* Backdrop blur support */
 .backdrop-blur-md {
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 /* Mobile menu transitions */
 #mobile-menu {
-    transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 #mobile-menu.show {
-    display: block !important;
+  display: block !important;
 }
 
 /* Custom focus styles */
-a:focus, 
+a:focus,
 button:focus {
-    outline: 2px solid #3B82F6;
-    outline-offset: 2px;
-    border-radius: 4px;
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 /* Typography improvements */
 .prose p {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 /* Responsive improvements */
 @media (max-width: 768px) {
-    .skill-category {
-        text-align: center;
-    }
-    
-    .project-card {
-        margin-bottom: 1rem;
-    }
+  .skill-category {
+    text-align: center;
+  }
+
+  .project-card {
+    margin-bottom: 1rem;
+  }
 }
 
 /* Subtle gradient background */
 body {
-    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-    min-height: 100vh;
+  /* background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); */
+  min-height: 100vh;
 }
 
 /* Section spacing */
 section {
-    position: relative;
+  position: relative;
+}
+
+#pattern-1 {
+  background:
+    /* grid */ linear-gradient(
+        to right,
+        rgba(229, 231, 235, 0.5) 1px,
+        transparent 1px
+      )
+      0% 0% / 60px 60px,
+    linear-gradient(rgba(229, 231, 235, 0.5) 1px, transparent 1px) 0% 0% / 60px
+      60px,
+    /* radial highlights */
+      radial-gradient(500px at 0% 20%, rgba(139, 92, 246, 0.3), transparent) 0%
+      0% / 100% 100%,
+    radial-gradient(500px at 100% 0%, rgba(59, 130, 246, 0.3), transparent) 0%
+      0% / 100% 100%,
+    /* base color */ rgb(255, 255, 255);
+
+  mask-image: radial-gradient(
+    70% 100% at 50% 0%,
+    rgb(255, 255, 255) 60%,
+    transparent 100%
+  );
+}
+
+.card-pattern::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+      to top left,
+      rgba(255, 255, 255, 0) 30%,
+      rgba(255, 255, 255, 0.5) 40%,
+      rgba(255, 255, 255, 1) 100%
+    ),
+    linear-gradient(to right, rgba(229, 231, 235, 0.4) 1px, transparent 1px) 0%
+      0% / 50px 50px,
+    linear-gradient(rgba(229, 231, 235, 0.4) 1px, transparent 1px) 0% 0% / 50px
+      50px;
+  pointer-events: none;
+}
+
+#text-path {
+  stroke-dasharray: 1679.3204345703125;
+  stroke-dashoffset: 1679.3204345703125;
+  animation: dash 20s linear forwards;
+}
+
+#card-path {
+  stroke-dasharray: 1501.9986572265625;
+  stroke-dashoffset: 1501.9986572265625;
+  animation: dash 3s linear forwards;
+}
+
+@keyframes dash {
+  100% {
+    stroke-dashoffset: 0;
+  }
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-    width: 8px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #f1f5f9;
+  background: #f1f5f9;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #cbd5e1;
-    border-radius: 4px;
+  background: #cbd5e1;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #94a3b8;
+  background: #94a3b8;
 }
