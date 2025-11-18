@@ -3,64 +3,139 @@ layout: default
 ---
 
 <style>
-  .communities-wrap { max-width: 1100px; margin: 0 auto; padding: 24px; padding-top: 90px; }
-  .controls { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:18px; }
-  .controls input, .controls select { padding:8px 10px; font-size:14px; }
-  #speakers-grid { display:grid; grid-template-columns: repeat(auto-fill,minmax(180px,1fr)); gap:12px; }
+  .communities-wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px;
+    padding-top: 90px;
+  }
+
+  .controls {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+  }
+
+  .controls input,
+  .controls select {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+
+  #speakers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+  }
 
   .speaker-card {
-    position:relative;
-    display:flex; flex-direction:column; align-items:center;
-    text-decoration:none; color:inherit;
-    border:1px solid #e6e6e6; border-radius:12px; padding:14px; background:#fff;
-    box-shadow:0 6px 18px rgba(10,10,10,0.03); transition:transform .12s ease;
-    z-index: 1; /* keep base stacking for card itself */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid #e6e6e6;
+    border-radius: 12px;
+    padding: 14px;
+    background: #fff;
+    box-shadow: 0 6px 18px rgba(10, 10, 10, 0.03);
+    transition: transform .12s ease;
+    z-index: 1;
+    /* keep base stacking for card itself */
   }
-  .speaker-card:hover { transform:translateY(-4px); }
-  .speaker-card img { width:80px; height:80px; border-radius:50%; object-fit:cover; margin-bottom:8px; }
-  .speaker-name { font-weight:600; text-align:center; font-size:0.95rem; line-height:1.2; }
+
+  .speaker-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .speaker-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 8px;
+  }
+
+  .speaker-name {
+    font-weight: 600;
+    text-align: center;
+    font-size: 0.95rem;
+    line-height: 1.2;
+  }
+
   .speaker-badge {
-    position:absolute; top:10px; right:10px;
-    background:#0073b1; color:#fff; font-weight:700; font-size:12px;
-    padding:4px 8px; border-radius:999px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #0073b1;
+    color: #fff;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 999px;
   }
 
   /* Global tooltip (appended to body via JS) */
   .global-tooltip {
     position: absolute;
-    pointer-events: none;       /* never block mouse events */
-    white-space: nowrap;        /* do not wrap lines */
-    z-index: 9999999;           /* very high, will be above everything */
+    pointer-events: none;
+    /* never block mouse events */
+    white-space: nowrap;
+    /* do not wrap lines */
+    z-index: 9999999;
+    /* very high, will be above everything */
     background: #222;
     color: #fff;
     padding: 8px 12px;
     border-radius: 6px;
     font-size: 0.8rem;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
     transform-origin: center top;
     transition: opacity .12s ease;
     opacity: 0;
-    display: block;             /* kept in DOM; JS sets opacity/visibility */
+    display: block;
+    /* kept in DOM; JS sets opacity/visibility */
   }
-  .global-tooltip.visible { opacity: 1; }
 
-  .global-tooltip strong { display:block; margin-bottom:6px; }
-  .global-tooltip ol { margin: 0; padding-left: 18px; }
-  .global-tooltip li { margin: 2px 0; }
+  .global-tooltip.visible {
+    opacity: 1;
+  }
+
+  .global-tooltip strong {
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .global-tooltip ol {
+    margin: 0;
+    padding-left: 18px;
+  }
+
+  .global-tooltip li {
+    margin: 2px 0;
+  }
 
   /* small responsive fallback: if viewport too small, allow wrapping */
   @media (max-width: 420px) {
-    .global-tooltip { white-space: normal; max-width: calc(100vw - 20px); }
+    .global-tooltip {
+      white-space: normal;
+      max-width: calc(100vw - 20px);
+    }
   }
 </style>
 
 <div class="communities-wrap pt-44 pb-16 px-6 max-w-4xl mx-auto">
   <h1 class="text-3xl font-bold mb-8">{{ page.title | default: "Communities" }}</h1>
-  <p class="text-gray-600 mb-6">A curated list of speakers who have presented at Lombok Dev Meetups and Events over the years. Connect with these talented individuals on LinkedIn to expand your professional network and stay updated on their latest endeavors.</p>
+  <p class="text-gray-600 mb-6">A curated list of speakers who have presented at Lombok Dev Meetups and Events over the
+    years. Connect with these talented individuals on LinkedIn to expand your professional network and stay updated on
+    their latest endeavors.</p>
 
 
   <div class="controls">
-    <input id="search" type="search" placeholder="Search speakers (name / topic / linkedin)..." />
+    <input id="search" class="border border-gray-500 rounded-lg" type="search"
+      placeholder="Search speakers (name / topic / linkedin)..." />
     <select id="sort">
       <option value="az">Sort A → Z</option>
       <option value="za">Sort Z → A</option>
@@ -71,96 +146,94 @@ layout: default
   {% assign speakers = "" | split: "|" %}
 
   {% for event in site.events %}
-    {% if event.speakers %}
-      {% for sp in event.speakers %}
-        {% if sp.url contains "linkedin.com" %}
-          {% assign display_url = sp.url %}
-        {% else %}
-          {% continue %}
-        {% endif %}
+  {% if event.speakers %}
+  {% for sp in event.speakers %}
+  {% if sp.url contains "linkedin.com" %}
+  {% assign display_url = sp.url %}
+  {% else %}
+  {% continue %}
+  {% endif %}
 
-        {% assign key = display_url | remove: "https://" | remove: "http://" | remove: "www." | replace: "/", "" | downcase %}
-        {% assign updated = false %}
-        {% assign new_speakers = "" | split: "|" %}
+  {% assign key = display_url | remove: "https://" | remove: "http://" | remove: "www." | replace: "/", "" | downcase %}
+  {% assign updated = false %}
+  {% assign new_speakers = "" | split: "|" %}
 
-        {% for item in speakers %}
-          {% if item != "" %}
-            {% assign parts = item | split: "|||" %}
-            {% assign ex_key = parts[0] %}
-            {% assign ex_display = parts[1] %}
-            {% assign ex_name = parts[2] %}
-            {% assign ex_count = parts[3] %}
-            {% assign ex_history = parts[4] | default: "" %}
+  {% for item in speakers %}
+  {% if item != "" %}
+  {% assign parts = item | split: "|||" %}
+  {% assign ex_key = parts[0] %}
+  {% assign ex_display = parts[1] %}
+  {% assign ex_name = parts[2] %}
+  {% assign ex_count = parts[3] %}
+  {% assign ex_history = parts[4] | default: "" %}
 
-            {% if ex_key == key %}
-              {% assign cur_name = sp.name %}
-              {% if cur_name.size > ex_name.size %}
-                {% assign chosen_name = cur_name %}
-              {% else %}
-                {% assign chosen_name = ex_name %}
-              {% endif %}
-              {% assign new_count = ex_count | plus: 1 %}
+  {% if ex_key == key %}
+  {% assign cur_name = sp.name %}
+  {% if cur_name.size > ex_name.size %}
+  {% assign chosen_name = cur_name %}
+  {% else %}
+  {% assign chosen_name = ex_name %}
+  {% endif %}
+  {% assign new_count = ex_count | plus: 1 %}
 
-              {% assign history_entry = event.title | append: " (" | append: event.event_date | append: ") - " | append: sp.topic %}
-              {% assign new_history = ex_history | append: ";;;" | append: history_entry %}
+  {% assign history_entry = event.title | append: " (" | append: event.event_date | append: ") - " | append: sp.topic %}
+  {% assign new_history = ex_history | append: ";;;" | append: history_entry %}
 
-              {% assign updated_item = ex_key | append: "|||" | append: ex_display | append: "|||" | append: chosen_name | append: "|||" | append: new_count | append: "|||" | append: new_history %}
-              {% assign new_speakers = new_speakers | push: updated_item %}
-              {% assign updated = true %}
-            {% else %}
-              {% assign new_speakers = new_speakers | push: item %}
-            {% endif %}
-          {% endif %}
-        {% endfor %}
+  {% assign updated_item = ex_key | append: "|||" | append: ex_display | append: "|||" | append: chosen_name | append:
+  "|||" | append: new_count | append: "|||" | append: new_history %}
+  {% assign new_speakers = new_speakers | push: updated_item %}
+  {% assign updated = true %}
+  {% else %}
+  {% assign new_speakers = new_speakers | push: item %}
+  {% endif %}
+  {% endif %}
+  {% endfor %}
 
-        {% if updated == false %}
-          {% assign history_entry = event.title | append: " (" | append: event.event_date | append: ") - " | append: sp.topic %}
-          {% assign new_item = key | append: "|||" | append: display_url | append: "|||" | append: sp.name | append: "|||" | append: "1" | append: "|||" | append: history_entry %}
-          {% assign new_speakers = new_speakers | push: new_item %}
-        {% endif %}
+  {% if updated == false %}
+  {% assign history_entry = event.title | append: " (" | append: event.event_date | append: ") - " | append: sp.topic %}
+  {% assign new_item = key | append: "|||" | append: display_url | append: "|||" | append: sp.name | append: "|||" |
+  append: "1" | append: "|||" | append: history_entry %}
+  {% assign new_speakers = new_speakers | push: new_item %}
+  {% endif %}
 
-        {% assign speakers = new_speakers %}
-      {% endfor %}
-    {% endif %}
+  {% assign speakers = new_speakers %}
+  {% endfor %}
+  {% endif %}
   {% endfor %}
 
   <!-- Render the grid -->
   <div id="speakers-grid">
-  {% for item in speakers %}
+    {% for item in speakers %}
     {% if item != "" %}
-      {% assign parts = item | split: "|||" %}
-      {% assign key = parts[0] %}
-      {% assign display_url = parts[1] %}
-      {% assign name = parts[2] %}
-      {% assign count = parts[3] %}
-      {% assign history_raw = parts[4] %}
-      {% assign history_list = history_raw | split: ";;;" %}
+    {% assign parts = item | split: "|||" %}
+    {% assign key = parts[0] %}
+    {% assign display_url = parts[1] %}
+    {% assign name = parts[2] %}
+    {% assign count = parts[3] %}
+    {% assign history_raw = parts[4] %}
+    {% assign history_list = history_raw | split: ";;;" %}
 
-      {% assign slug = display_url | split: "/" | last %}
-      {% assign slug_first = slug | split: "-" | first %}
-      {% assign name_file = name | downcase | replace: " ", "-" %}
-      {% assign first_word = name | split: " " | first | downcase %}
+    {% assign slug = display_url | split: "/" | last %}
+    {% assign slug_first = slug | split: "-" | first %}
+    {% assign name_file = name | downcase | replace: " ", "-" %}
+    {% assign first_word = name | split: " " | first | downcase %}
 
-      {% assign file_jpeg_slug = "../assets/lombokdev/speakers/" | append: slug_first | append: ".jpeg" %}
-      {% assign file_jpg_slug  = "../assets/lombokdev/speakers/" | append: slug_first | append: ".jpg" %}
-      {% assign file_png_slug  = "../assets/lombokdev/speakers/" | append: slug_first | append: ".png" %}
+    {% assign file_jpeg_slug = "../assets/lombokdev/speakers/" | append: slug_first | append: ".jpeg" %}
+    {% assign file_jpg_slug = "../assets/lombokdev/speakers/" | append: slug_first | append: ".jpg" %}
+    {% assign file_png_slug = "../assets/lombokdev/speakers/" | append: slug_first | append: ".png" %}
 
-      {% assign file_jpeg_name = "../assets/lombokdev/speakers/" | append: name_file | append: ".jpeg" %}
-      {% assign file_jpg_name  = "../assets/lombokdev/speakers/" | append: name_file | append: ".jpg" %}
-      {% assign file_png_name  = "../assets/lombokdev/speakers/" | append: name_file | append: ".png" %}
+    {% assign file_jpeg_name = "../assets/lombokdev/speakers/" | append: name_file | append: ".jpeg" %}
+    {% assign file_jpg_name = "../assets/lombokdev/speakers/" | append: name_file | append: ".jpg" %}
+    {% assign file_png_name = "../assets/lombokdev/speakers/" | append: name_file | append: ".png" %}
 
-      {% assign file_jpeg_first = "../assets/lombokdev/speakers/" | append: first_word | append: ".jpeg" %}
-      {% assign file_jpg_first  = "../assets/lombokdev/speakers/" | append: first_word | append: ".jpg" %}
-      {% assign file_png_first  = "../assets/lombokdev/speakers/" | append: first_word | append: ".png" %}
+    {% assign file_jpeg_first = "../assets/lombokdev/speakers/" | append: first_word | append: ".jpeg" %}
+    {% assign file_jpg_first = "../assets/lombokdev/speakers/" | append: first_word | append: ".jpg" %}
+    {% assign file_png_first = "../assets/lombokdev/speakers/" | append: first_word | append: ".png" %}
 
-      <a class="speaker-card"
-         href="{{ display_url }}" target="_blank" rel="noopener noreferrer"
-         data-name="{{ name | escape }}"
-         data-url="{{ display_url | escape }}"
-         data-count="{{ count }}"
-         data-history="{{ history_raw | escape }}">
-        <img src="{{ file_jpeg_slug }}" alt="{{ name | escape }}"
-             onerror="this.onerror=null;
+    <a class="speaker-card" href="{{ display_url }}" target="_blank" rel="noopener noreferrer"
+      data-name="{{ name | escape }}" data-url="{{ display_url | escape }}" data-count="{{ count }}"
+      data-history="{{ history_raw | escape }}">
+      <img src="{{ file_jpeg_slug }}" alt="{{ name | escape }}" onerror="this.onerror=null;
                       this.src='{{ file_jpg_slug }}';
                       this.onerror=function(){this.src='{{ file_png_slug }}'};
                       this.onerror=function(){this.src='{{ file_jpeg_name }}'};
@@ -170,12 +243,12 @@ layout: default
                       this.onerror=function(){this.src='{{ file_jpg_first }}'};
                       this.onerror=function(){this.src='{{ file_png_first }}'};
                       this.onerror=function(){this.src='../assets/lombokdev/speakers/placeholder.png'};">
-        <div class="speaker-name">{{ name }}</div>
-        <!-- <div class="speaker-badge">{{ count }}x</div> -->
-      </a>
+      <div class="speaker-name">{{ name }}</div>
+      <!-- <div class="speaker-badge">{{ count }}x</div> -->
+    </a>
     {% endif %}
-  {% endfor %}
-</div>
+    {% endfor %}
+  </div>
 
 </div>
 
@@ -201,7 +274,7 @@ layout: default
 
     function sortCards(order) {
       const cards = getCards().slice();
-      cards.sort((a,b) => {
+      cards.sort((a, b) => {
         const nameA = a.dataset.name.toLowerCase();
         const nameB = b.dataset.name.toLowerCase();
         if (order === 'az') return nameA.localeCompare(nameB);
