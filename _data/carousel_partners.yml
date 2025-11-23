@@ -14,7 +14,19 @@ images:
   - 'assets/lombokdev/partners/uxid-lombok.webp'
 
 # Optional captions for each image
-# captions:
+urls:
+  - ''
+  - ''
+  - 'https://t.me/lombokai'
+  - 'https://t.me/android_lombok'
+  - 'https://t.me/android_lombok'
+  - 'http://lombok.js.org'
+  - ''
+  - 'https://t.me/lombok_py'
+  - 'https://t.me/lotengdev'
+  - ''
+  - 'https://petanikode.com'
+  - 'https://t.me/uxidlombok'
 
 # Carousel settings
 settings:
