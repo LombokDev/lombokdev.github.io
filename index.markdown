@@ -1,5 +1,6 @@
 ---
 layout: default
+hero_url: "/events/ldm13"
 ---
 
 {% include hero.html %}
