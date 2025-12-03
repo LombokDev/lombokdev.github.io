@@ -9,11 +9,7 @@ duration: "1 Day"
 decks: https://github.com/LombokDev/Meetup013
 
 # registration_url: "https://docs.google.com/forms/d/e/1FAIpQLSfZvDGOYpt-SrwL3Qi0_ncJqY5BRCFBsV4jcCzlOHKINli1Hw/viewform?pli=1"
-description: " <b>Lombok Dev Meetup #13</b> Join us for a full-day tech meetup featuring experts from diverse fields, ranging from freelancing, web security, CMS development, memory management, to AI and prompt optimization.
-This event brings together developers, creatives, and tech enthusiasts to learn practical insights directly from industry practitioners. Participants will explore common vulnerabilities like XSS, dive into modern CMS workflows with Next.js & PayloadCMS, uncover the hidden story of memory management in software development, and navigate the rapidly evolving AI era.
-
-Whether you're a beginner, student, or working professional, this meetup is designed to inspire, equip, and connect you with the local tech community.
-Don’t miss the chance to learn, ask questions, and network with speakers and fellow attendees! 
+description: " <b>Lombok Dev Meetup #13</b> Join us for a full-day of learning and exploration, bringing together a lineup of highly relevant topics for today’s developers, including freelancing, modern CMS workflows, cybersecurity, memory management, and AI prompt optimization. This event will guide you through the real dynamics of freelancing beyond working alone, introduce the power of combining Next.js with PayloadCMS for a modern and efficient CMS workflow, and deepen your understanding of how modern trojans and cyber threats operate. You will also uncover the untold story behind memory management in software development and learn how structured prompting, transforming JSON into creative AI-ready outputs, can enhance your workflow in the LLM era. Delivered by experienced practitioners, this meetup offers practical insights, meaningful discussions, and valuable opportunities to connect with fellow learners, beginners, and professionals within the Lombok tech community. Designed to inspire, equip, and elevate your journey in technology, this is an event you will not want to miss, so secure your seat and be part of the momentum!
 <br/>
 <br/>
 <img src=\"../assets/lombokdev/ldm13/ldm13.png\" >
