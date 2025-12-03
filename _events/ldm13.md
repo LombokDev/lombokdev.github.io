@@ -15,9 +15,10 @@ This event brings together developers, creatives, and tech enthusiasts to learn 
 Whether you're a beginner, student, or working professional, this meetup is designed to inspire, equip, and connect you with the local tech community.
 Don’t miss the chance to learn, ask questions, and network with speakers and fellow attendees! 
 <br/>
-<img src=\"../assets/lombokdev/ldm13/cfs.jpg\" >
 <br/>
-<a href=\"https://docs.google.com/forms/d/e/1FAIpQLSfZvDGOYpt-SrwL3Qi0_ncJqY5BRCFBsV4jcCzlOHKINli1Hw/viewform?pli=1\" class=\"px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700\">Speakership Submission</a>
+<img src=\"../assets/lombokdev/ldm13/ldm13.png\" >
+<br/>
+<a href=\"https://tinyurl.com/ldm-registration\" class=\"px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700\">Registration</a>
 "
 
 
