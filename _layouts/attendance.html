@@ -1,0 +1,725 @@
+---
+layout: default
+---
+
+<style>
+  .attendance-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    padding-top: 100px;
+  }
+
+  .attendance-header {
+    margin-bottom: 2rem;
+  }
+
+  .attendance-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #1f2937;
+  }
+
+  .attendance-header p {
+    color: #6b7280;
+    font-size: 0.95rem;
+  }
+
+  .import-section {
+    background: #f9fafb;
+    border: 2px dashed #d1d5db;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .import-section.has-data {
+    background: #ecfdf5;
+    border-color: #10b981;
+  }
+
+  .import-section h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: #374151;
+  }
+
+  .import-section p {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-bottom: 1rem;
+  }
+
+  .file-input-wrapper {
+    position: relative;
+    display: inline-block;
+  }
+
+  .file-input-wrapper input[type="file"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .file-input-label {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: #3b82f6;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+  }
+
+  .file-input-label:hover {
+    background: #2563eb;
+  }
+
+  .file-input-label:active {
+    background: #1d4ed8;
+  }
+
+  .import-status {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .import-status.success {
+    background: #d1fae5;
+    color: #065f46;
+  }
+
+  .import-status.error {
+    background: #fee2e2;
+    color: #991b1b;
+  }
+
+  .search-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+  }
+
+  .search-input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+
+  .stats-bar {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .stat-card {
+    flex: 1;
+    min-width: 150px;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .stat-card .stat-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-card .stat-label {
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+
+  .stat-card.total .stat-value {
+    color: #3b82f6;
+  }
+
+  .stat-card.present .stat-value {
+    color: #10b981;
+  }
+
+  .stat-card.absent .stat-value {
+    color: #ef4444;
+  }
+
+  .participants-list {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .participant-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid #f3f4f6;
+    transition: background 0.15s;
+  }
+
+  .participant-item:last-child {
+    border-bottom: none;
+  }
+
+  .participant-item:hover {
+    background: #f9fafb;
+  }
+
+  .participant-item.hidden {
+    display: none;
+  }
+
+  .participant-checkbox {
+    width: 24px;
+    height: 24px;
+    margin-right: 1rem;
+    cursor: pointer;
+    accent-color: #10b981;
+    flex-shrink: 0;
+  }
+
+  .participant-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .participant-name {
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 0.25rem;
+  }
+
+  .participant-email {
+    font-size: 0.875rem;
+    color: #6b7280;
+    word-break: break-all;
+  }
+
+  .participant-status {
+    margin-left: 1rem;
+    padding: 0.375rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+  }
+
+  .participant-status.present {
+    background: #d1fae5;
+    color: #065f46;
+  }
+
+  .participant-status.absent {
+    background: #fee2e2;
+    color: #991b1b;
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #6b7280;
+  }
+
+  .empty-state svg {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1rem;
+    opacity: 0.5;
+  }
+
+  .empty-state h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #374151;
+  }
+
+  .actions-bar {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    padding: 0.625rem 1.25rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: #3b82f6;
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: #2563eb;
+  }
+
+  .btn-secondary {
+    background: #6b7280;
+    color: white;
+  }
+
+  .btn-secondary:hover {
+    background: #4b5563;
+  }
+
+  .btn-success {
+    background: #10b981;
+    color: white;
+  }
+
+  .btn-success:hover {
+    background: #059669;
+  }
+
+  .btn-danger {
+    background: #ef4444;
+    color: white;
+  }
+
+  .btn-danger:hover {
+    background: #dc2626;
+  }
+
+  @media (max-width: 640px) {
+    .attendance-container {
+      padding: 1rem 0.75rem;
+      padding-top: 90px;
+    }
+
+    .stats-bar {
+      flex-direction: column;
+    }
+
+    .stat-card {
+      min-width: 100%;
+    }
+
+    .participant-item {
+      flex-wrap: wrap;
+    }
+
+    .participant-status {
+      margin-left: 0;
+      margin-top: 0.5rem;
+      width: 100%;
+      text-align: center;
+    }
+  }
+</style>
+
+<div class="attendance-container">
+  <div class="attendance-header">
+    <h1>{{ page.title | default: "Attendance" }}</h1>
+    <p>Import peserta dari file CSV atau Excel, lalu tandai kehadiran mereka.</p>
+  </div>
+
+  <!-- Import Section -->
+  <section class="import-section" id="import-section">
+    <h3>Import Data Peserta</h3>
+    <p>Upload file CSV atau Excel (.xlsx) yang berisi daftar peserta</p>
+    <div class="file-input-wrapper">
+      <input type="file" id="file-input" accept=".csv,.xlsx,.xls" />
+      <label for="file-input" class="file-input-label">
+        Pilih File CSV/Excel
+      </label>
+    </div>
+    <div id="import-status" class="import-status" style="display: none;"></div>
+  </section>
+
+  <!-- Stats Bar -->
+  <div class="stats-bar" id="stats-bar" style="display: none;">
+    <div class="stat-card total">
+      <div class="stat-value" id="stat-total">0</div>
+      <div class="stat-label">Total Peserta</div>
+    </div>
+    <div class="stat-card present">
+      <div class="stat-value" id="stat-present">0</div>
+      <div class="stat-label">Hadir</div>
+    </div>
+    <div class="stat-card absent">
+      <div class="stat-value" id="stat-absent">0</div>
+      <div class="stat-label">Tidak Hadir</div>
+    </div>
+  </div>
+
+  <!-- Search Section -->
+  <div class="search-section" id="search-section" style="display: none;">
+    <input
+      type="text"
+      id="search-input"
+      class="search-input"
+      placeholder="🔍 Cari nama atau email peserta..."
+    />
+  </div>
+
+  <!-- Participants List -->
+  <div class="participants-list" id="participants-list" style="display: none;">
+    <div id="participants-container"></div>
+  </div>
+
+  <!-- Empty State -->
+  <div class="empty-state" id="empty-state">
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+    </svg>
+    <h3>Belum ada data peserta</h3>
+    <p>Silakan import file CSV atau Excel untuk memulai</p>
+  </div>
+
+  <!-- Actions Bar -->
+  <div class="actions-bar" id="actions-bar" style="display: none;">
+    <button class="btn btn-success" id="btn-mark-all-present">Tandai Semua Hadir</button>
+    <button class="btn btn-danger" id="btn-mark-all-absent">Tandai Semua Tidak Hadir</button>
+    <button class="btn btn-secondary" id="btn-export">Export ke CSV</button>
+    <button class="btn btn-danger" id="btn-clear">Hapus Data</button>
+  </div>
+</div>
+
+<!-- SheetJS for Excel support -->
+<script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+
+<script>
+  (function() {
+    const STORAGE_KEY = 'attendance_data';
+    const FILE_INPUT = document.getElementById('file-input');
+    const IMPORT_STATUS = document.getElementById('import-status');
+    const IMPORT_SECTION = document.getElementById('import-section');
+    const SEARCH_SECTION = document.getElementById('search-section');
+    const SEARCH_INPUT = document.getElementById('search-input');
+    const STATS_BAR = document.getElementById('stats-bar');
+    const PARTICIPANTS_LIST = document.getElementById('participants-list');
+    const PARTICIPANTS_CONTAINER = document.getElementById('participants-container');
+    const EMPTY_STATE = document.getElementById('empty-state');
+    const ACTIONS_BAR = document.getElementById('actions-bar');
+    const STAT_TOTAL = document.getElementById('stat-total');
+    const STAT_PRESENT = document.getElementById('stat-present');
+    const STAT_ABSENT = document.getElementById('stat-absent');
+    const BTN_MARK_ALL_PRESENT = document.getElementById('btn-mark-all-present');
+    const BTN_MARK_ALL_ABSENT = document.getElementById('btn-mark-all-absent');
+    const BTN_EXPORT = document.getElementById('btn-export');
+    const BTN_CLEAR = document.getElementById('btn-clear');
+
+    let participants = [];
+    let attendanceData = {};
+
+    // Load from localStorage on init
+    function loadFromStorage() {
+      try {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored) {
+          const data = JSON.parse(stored);
+          participants = data.participants || [];
+          attendanceData = data.attendance || {};
+          if (participants.length > 0) {
+            renderParticipants();
+            updateStats();
+            showUI();
+            // Hide import section if data already exists
+            IMPORT_SECTION.style.display = 'none';
+          }
+        }
+      } catch (e) {
+        console.error('Failed to load from storage:', e);
+      }
+    }
+
+    // Save to localStorage
+    function saveToStorage() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+          participants,
+          attendance: attendanceData
+        }));
+      } catch (e) {
+        console.error('Failed to save to storage:', e);
+        alert('Gagal menyimpan data. Storage mungkin penuh.');
+      }
+    }
+
+    // Parse CSV
+    function parseCSV(text) {
+      const lines = text.split('\n').filter(line => line.trim());
+      if (lines.length === 0) return [];
+
+      const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
+      const nameIdx = headers.findIndex(h => h.includes('nama') || h.includes('name'));
+      const emailIdx = headers.findIndex(h => h.includes('email') || h.includes('e-mail'));
+
+      if (nameIdx === -1) {
+        throw new Error('Kolom "Nama" atau "Name" tidak ditemukan');
+      }
+
+      const result = [];
+      for (let i = 1; i < lines.length; i++) {
+        const values = lines[i].split(',').map(v => v.trim());
+        const name = values[nameIdx] || '';
+        const email = emailIdx >= 0 ? (values[emailIdx] || '') : '';
+        if (name) {
+          result.push({ name, email, id: `p-${i}-${Date.now()}` });
+        }
+      }
+      return result;
+    }
+
+    // Parse Excel
+    function parseExcel(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          try {
+            const data = new Uint8Array(e.target.result);
+            const workbook = XLSX.read(data, { type: 'array' });
+            const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+            const jsonData = XLSX.utils.sheet_to_json(firstSheet);
+
+            if (jsonData.length === 0) {
+              reject(new Error('File Excel kosong'));
+              return;
+            }
+
+            const headers = Object.keys(jsonData[0]).map(h => h.toLowerCase());
+            const nameKey = headers.find(h => h.includes('nama') || h.includes('name'));
+            const emailKey = headers.find(h => h.includes('email') || h.includes('e-mail'));
+
+            if (!nameKey) {
+              reject(new Error('Kolom "Nama" atau "Name" tidak ditemukan'));
+              return;
+            }
+
+            const result = jsonData.map((row, idx) => ({
+              name: String(row[nameKey] || row[Object.keys(row).find(k => k.toLowerCase().includes('nama') || k.toLowerCase().includes('name'))] || ''),
+              email: emailKey ? String(row[emailKey] || row[Object.keys(row).find(k => k.toLowerCase().includes('email'))] || '') : '',
+              id: `p-${idx}-${Date.now()}`
+            })).filter(p => p.name);
+
+            resolve(result);
+          } catch (err) {
+            reject(err);
+          }
+        };
+        reader.onerror = reject;
+        reader.readAsArrayBuffer(file);
+      });
+    }
+
+    // Handle file import
+    FILE_INPUT.addEventListener('change', async function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      IMPORT_STATUS.style.display = 'none';
+      IMPORT_STATUS.className = 'import-status';
+
+      try {
+        let parsed = [];
+        const fileName = file.name.toLowerCase();
+
+        if (fileName.endsWith('.csv')) {
+          const text = await file.text();
+          parsed = parseCSV(text);
+        } else if (fileName.endsWith('.xlsx') || fileName.endsWith('.xls')) {
+          parsed = await parseExcel(file);
+        } else {
+          throw new Error('Format file tidak didukung. Gunakan CSV atau Excel (.xlsx)');
+        }
+
+        if (parsed.length === 0) {
+          throw new Error('Tidak ada data peserta yang ditemukan');
+        }
+
+        participants = parsed;
+        attendanceData = {};
+        renderParticipants();
+        updateStats();
+        saveToStorage();
+        showUI();
+
+        IMPORT_STATUS.textContent = `Berhasil mengimpor ${parsed.length} peserta`;
+        IMPORT_STATUS.className = 'import-status success';
+        IMPORT_STATUS.style.display = 'block';
+        IMPORT_SECTION.classList.add('has-data');
+        
+        setTimeout(() => {
+          IMPORT_SECTION.style.display = 'none';
+        }, 2000);
+
+        FILE_INPUT.value = '';
+      } catch (err) {
+        IMPORT_STATUS.textContent = `Error: ${err.message}`;
+        IMPORT_STATUS.className = 'import-status error';
+        IMPORT_STATUS.style.display = 'block';
+        console.error('Import error:', err);
+      }
+    });
+
+    // Render participants
+    function renderParticipants(filter = '') {
+      const filterLower = filter.toLowerCase();
+      const filtered = participants.filter(p => {
+        if (!filter) return true;
+        return p.name.toLowerCase().includes(filterLower) ||
+               p.email.toLowerCase().includes(filterLower);
+      });
+
+      if (filtered.length === 0) {
+        PARTICIPANTS_CONTAINER.innerHTML = '<div class="empty-state"><p>Tidak ada peserta yang cocok dengan pencarian</p></div>';
+        return;
+      }
+
+      PARTICIPANTS_CONTAINER.innerHTML = filtered.map(p => {
+        const isPresent = attendanceData[p.id] === true;
+        const isAbsent = attendanceData[p.id] === false;
+        const statusClass = isPresent ? 'present' : (isAbsent ? 'absent' : '');
+        const statusText = isPresent ? 'Hadir' : (isAbsent ? 'Tidak Hadir' : '');
+
+        return `
+          <div class="participant-item" data-id="${p.id}">
+            <input
+              type="checkbox"
+              class="participant-checkbox"
+              data-id="${p.id}"
+              ${isPresent ? 'checked' : ''}
+            />
+            <div class="participant-info">
+              <div class="participant-name">${escapeHtml(p.name)}</div>
+              ${p.email ? `<div class="participant-email">${escapeHtml(p.email)}</div>` : ''}
+            </div>
+            ${statusText ? `<span class="participant-status ${statusClass}">${statusText}</span>` : ''}
+          </div>
+        `;
+      }).join('');
+
+      PARTICIPANTS_CONTAINER.querySelectorAll('.participant-checkbox').forEach(cb => {
+        cb.addEventListener('change', function() {
+          const id = this.dataset.id;
+          attendanceData[id] = this.checked;
+          saveToStorage();
+          updateStats();
+          renderParticipants(filter);
+        });
+      });
+    }
+
+    function updateStats() {
+      const total = participants.length;
+      const present = Object.values(attendanceData).filter(v => v === true).length;
+      const absent = Object.values(attendanceData).filter(v => v === false).length;
+
+      STAT_TOTAL.textContent = total;
+      STAT_PRESENT.textContent = present;
+      STAT_ABSENT.textContent = absent;
+    }
+
+    function showUI() {
+      STATS_BAR.style.display = 'flex';
+      SEARCH_SECTION.style.display = 'block';
+      PARTICIPANTS_LIST.style.display = 'block';
+      EMPTY_STATE.style.display = 'none';
+      ACTIONS_BAR.style.display = 'flex';
+    }
+
+    function hideUI() {
+      STATS_BAR.style.display = 'none';
+      SEARCH_SECTION.style.display = 'none';
+      PARTICIPANTS_LIST.style.display = 'none';
+      EMPTY_STATE.style.display = 'block';
+      ACTIONS_BAR.style.display = 'none';
+
+      IMPORT_SECTION.style.display = 'block';
+    }
+
+    SEARCH_INPUT.addEventListener('input', function() {
+      renderParticipants(this.value);
+    });
+
+    BTN_MARK_ALL_PRESENT.addEventListener('click', function() {
+      participants.forEach(p => {
+        attendanceData[p.id] = true;
+      });
+      saveToStorage();
+      updateStats();
+      renderParticipants(SEARCH_INPUT.value);
+    });
+
+    BTN_MARK_ALL_ABSENT.addEventListener('click', function() {
+      participants.forEach(p => {
+        attendanceData[p.id] = false;
+      });
+      saveToStorage();
+      updateStats();
+      renderParticipants(SEARCH_INPUT.value);
+    });
+
+    BTN_EXPORT.addEventListener('click', function() {
+      const csv = [
+        ['Nama', 'Email', 'Status'],
+        ...participants.map(p => {
+          const status = attendanceData[p.id] === true ? 'Hadir' : 
+                        attendanceData[p.id] === false ? 'Tidak Hadir' : 'Belum Ditandai';
+          return [p.name, p.email, status];
+        })
+      ].map(row => row.map(cell => `"${String(cell).replace(/"/g, '""')}"`).join(',')).join('\n');
+
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement('a');
+      const url = URL.createObjectURL(blob);
+      link.setAttribute('href', url);
+      link.setAttribute('download', `attendance_${new Date().toISOString().split('T')[0]}.csv`);
+      link.style.visibility = 'hidden';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+
+    BTN_CLEAR.addEventListener('click', function() {
+      if (confirm('Yakin ingin menghapus semua data? Tindakan ini tidak dapat dibatalkan.')) {
+        participants = [];
+        attendanceData = {};
+        localStorage.removeItem(STORAGE_KEY);
+        hideUI();
+        IMPORT_SECTION.classList.remove('has-data');
+        IMPORT_STATUS.style.display = 'none';
+        SEARCH_INPUT.value = '';
+      }
+    });
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    loadFromStorage();
+  })();
+</script>
+
