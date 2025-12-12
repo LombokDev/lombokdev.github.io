@@ -1,4 +1,4 @@
----
+<!-- ---
 layout: events
 title: "TEMPLATE EVENT - !!!DO NOT REGISTER!!!"
 event_id: 26b5ada4-8808-45ed-90ca-c66301221b33
@@ -20,4 +20,4 @@ speakers:
   - name: "Jane Smith"
     topic: "AI in Mobile Apps"
 registration_url: "/register/hacktoberfest-25"
----
+--- -->

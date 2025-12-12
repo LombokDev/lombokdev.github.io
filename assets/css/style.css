@@ -1,12 +1,12 @@
 /* this import just for tailwind intellisense usage */
-@import 'tailwindcss';
+/* @import 'tailwindcss'; */
 
 /* Custom styles for the Jekyll portfolio */
 
 /* Font family */
 .font-inter {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-    'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", sans-serif;
 }
 
 /* Smooth scrolling */
@@ -137,7 +137,7 @@ section {
 }
 
 .card-pattern::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   z-index: -1;
