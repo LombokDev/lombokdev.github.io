@@ -97,5 +97,8 @@ speakers:
   - name: "Anwar Sapi'i"
     topic: "Event Organizer"
     url: "https://www.linkedin.com/in/anwar-s/"
+  - name: "Erwin Edi"
+    topic: "Event Organizer"
+    url: "https://www.linkedin.com/in/erwinedi/"
 
 ---

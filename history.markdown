@@ -79,7 +79,7 @@ url: events/2019-12-08-ldm8
 
 event: Official 9th Meetup
 date: 2020-05-04
-image: https://cdn-images-1.medium.com/max/1600/1*u9DmbldnttzgrUs8bRV5xw.jpeg
+image: /assets/lombokdev/images/ldm9.png
 position: left
 description: <b>Lombok Dev Meetup #9</b><br>Location: Online Meetup (COVID 19)<br>
 url: events/2019-07-28-ldm9
@@ -87,26 +87,26 @@ url: events/2019-07-28-ldm9
 ---
 
 event: Official 10th Meetup
-date: 2020-05-04
-image: https://cdn-images-1.medium.com/max/1600/1*uGbDBLwY5WkW8wsENND8vA.jpeg
+date: 2022-08-07
+image: /assets/lombokdev/images/meetup10.jpeg
 position: right
 description: <b>Lombok Dev Meetup #10</b><br>Location: MVP Coffee Company Jl. Terusan Bung Hatta No.107, Monjok, Kec. Selaparang, Kota Mataram<br>
-url: https://github.com/LombokDev/Meetup010
+url: events/2022-08-07-ldm10
 
 ---
 
 event: Official 11th Meetup
 date: 2023-10-01
-image: https://cdn-images-1.medium.com/max/1600/1*FumXtKyluA-imqud5GGZSw.jpeg
+image: /assets/lombokdev/images/ldm11.png
 position: left
 description: <b>Lombok Dev Meetup #11</b><br>Location: MVP Coffee Company Jl. Terusan Bung Hatta No.107, Monjok, Kec. Selaparang, Kota Mataram <br>
-url: https://lombokdev.github.io/Meetup011/
+url: events/2023-10-01-ldm11
 
 ---
 
 event: Official 12th Meetup
 date: 2024-09-15
-image: https://cdn-images-1.medium.com/max/1600/1*RdWB2cryfMiIpzmRQ3iZvQ.jpeg
+image: /assets/lombokdev/images/ldm12.jpg
 position: right
 description: <b>Lombok Dev Meetup #12</b><br>Location: UPNORMAL COFFEE Jl. Bung Karno No.22, Pagesangan Tim., Kec. Mataram, Kota Mataram, Nusa Tenggara Bar. 83127 <br>
 url: events/2024-09-15-lmd12
