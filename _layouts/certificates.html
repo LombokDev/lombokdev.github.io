@@ -1,0 +1,113 @@
+---
+layout: default
+---
+
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+
+<style>
+  .cert-container {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 2rem;
+    padding-top: 90px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 1rem;
+  }
+  .user-info {
+    margin-bottom: 1rem;
+  }
+  #certificate-frame {
+    border: 1px solid #ccc;
+    width: 100%;
+    height: 80vh;
+  }
+</style>
+
+<div class="cert-container">
+  <div>
+    <div class="user-info" id="user-info">
+      <div id="g_id_onload"
+           data-client_id="820930631538-pcpv8qid6rpvgeirjjksbjp06u1f2oi6.apps.googleusercontent.com"
+           data-callback="handleCredentialResponse">
+      </div>
+      <div class="g_id_signin"
+           data-type="standard"
+           data-size="large"
+           data-theme="outline"
+           data-text="sign_in_with"
+           data-shape="rect"
+           data-logo_alignment="left">
+      </div>
+    </div>
+
+    <select id="events-dropdown" style="display:none; width:100%; padding:0.5rem;">
+      <option value="">Select your event certificate</option>
+    </select>
+  </div>
+
+  <div>
+    <iframe id="certificate-frame"></iframe>
+  </div>
+</div>
+
+<script>
+  let googleUser = null;
+
+  async function handleCredentialResponse(response) {
+    const data = parseJwt(response.credential);
+    googleUser = data;
+    document.getElementById('user-info').innerHTML =
+      `<p><strong>${data.name}</strong><br>${data.email}</p>`;
+    await loadEvents(data.sub);
+  }
+
+  function parseJwt(token) {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(atob(base64).split('').map(c =>
+      '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
+    ).join(''));
+    return JSON.parse(jsonPayload);
+  }
+
+  async function loadEvents(userId) {
+    try {
+      const res = await fetch('https://xrxfvavgbcphhywznrfq.supabase.co/functions/v1/my-certificates', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ user_id: userId })
+      });
+      if (!res.ok) throw new Error('Failed fetching events');
+      const events = await res.json();
+
+      const dropdown = document.getElementById('events-dropdown');
+      dropdown.innerHTML = '<option value="">Select your event certificate</option>';
+      events.forEach(id => {
+        dropdown.innerHTML += `<option value="${id}">${id}</option>`;
+      });
+      dropdown.style.display = 'block';
+
+      dropdown.addEventListener('change', e => {
+        if (e.target.value) loadCertificate(e.target.value);
+      });
+
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  async function loadCertificate(eventId) {
+    // Since Jekyll builds everything statically, we must load the collection index at build time.
+    // We'll expose them via `site.certificates` below:
+    // const allCertificates = {{ site.certificates | jsonify }};
+    // const cert = allCertificates.find(c => c.id === eventId);
+    // if (!cert) {
+    //   alert('Certificate not found');
+    //   return;
+    // }
+
+    // const svgPath = `{{ '/assets/certificates/' | relative_url }}${cert.certificate}`;
+    // document.getElementById('certificate-frame').src = svgPath;
+  }
+</script>

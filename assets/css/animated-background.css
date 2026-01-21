@@ -1,0 +1,309 @@
+/* Animated Background Styles for Jekyll Portfolio */
+
+/* Option 1: Animated Gradient Background */
+.animated-gradient-bg {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.1;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Option 2: Subtle Moving Gradient */
+.subtle-gradient-bg {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-size: 400% 400%;
+    animation: subtleGradient 20s ease infinite;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.05;
+}
+
+@keyframes subtleGradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Option 3: Floating Dots Background */
+.floating-dots {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.dot {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #3B82F6;
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: float 20s infinite linear;
+}
+
+.dot:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 25s; }
+.dot:nth-child(2) { left: 20%; animation-delay: 2s; animation-duration: 30s; }
+.dot:nth-child(3) { left: 30%; animation-delay: 4s; animation-duration: 35s; }
+.dot:nth-child(4) { left: 40%; animation-delay: 6s; animation-duration: 28s; }
+.dot:nth-child(5) { left: 50%; animation-delay: 8s; animation-duration: 32s; }
+.dot:nth-child(6) { left: 60%; animation-delay: 10s; animation-duration: 26s; }
+.dot:nth-child(7) { left: 70%; animation-delay: 12s; animation-duration: 38s; }
+.dot:nth-child(8) { left: 80%; animation-delay: 14s; animation-duration: 24s; }
+.dot:nth-child(9) { left: 90%; animation-delay: 16s; animation-duration: 29s; }
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.3;
+    }
+    90% {
+        opacity: 0.3;
+    }
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Option 4: Geometric Shapes */
+.geometric-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.shape {
+    position: absolute;
+    opacity: 0.1;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 26px solid #3B82F6;
+    animation: rotate 15s linear infinite;
+}
+
+.circle {
+    width: 20px;
+    height: 20px;
+    background: #10B981;
+    border-radius: 50%;
+    animation: pulse 8s ease-in-out infinite;
+}
+
+.square {
+    width: 18px;
+    height: 18px;
+    background: #F59E0B;
+    animation: float-horizontal 12s ease-in-out infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.1; }
+    50% { transform: scale(1.2); opacity: 0.2; }
+}
+
+@keyframes float-horizontal {
+    0%, 100% { transform: translateX(0px); }
+    50% { transform: translateX(20px); }
+}
+
+/* Option 5: Mesh Gradient Background */
+.mesh-gradient {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.3) 0%, transparent 50%);
+    animation: meshMove 20s ease infinite;
+}
+
+@keyframes meshMove {
+    0%, 100% { 
+        background: 
+            radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+            radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.3) 0%, transparent 50%);
+    }
+    33% { 
+        background: 
+            radial-gradient(circle at 70% 40%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+            radial-gradient(circle at 30% 70%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+            radial-gradient(circle at 60% 80%, rgba(120, 219, 255, 0.3) 0%, transparent 50%);
+    }
+    66% { 
+        background: 
+            radial-gradient(circle at 80% 90%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+            radial-gradient(circle at 10% 30%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+            radial-gradient(circle at 90% 10%, rgba(120, 219, 255, 0.3) 0%, transparent 50%);
+    }
+}
+
+/* Performance optimizations */
+.animated-bg {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .animated-gradient-bg,
+    .subtle-gradient-bg,
+    .mesh-gradient {
+        animation: none;
+    }
+    
+    .dot,
+    .triangle,
+    .circle,
+    .square {
+        animation: none;
+    }
+}
+
+
+
+/* CSS Grid Animation Background */
+.grid-animation-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: 
+        linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+}
+
+/* Floating Elements */
+.floating-elements {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.floating-element {
+    position: absolute;
+    opacity: 0.1;
+    animation: floatUp 15s infinite linear;
+}
+
+.floating-element:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+    animation-duration: 20s;
+}
+
+.floating-element:nth-child(2) {
+    left: 30%;
+    animation-delay: 5s;
+    animation-duration: 25s;
+}
+
+.floating-element:nth-child(3) {
+    left: 50%;
+    animation-delay: 10s;
+    animation-duration: 18s;
+}
+
+.floating-element:nth-child(4) {
+    left: 70%;
+    animation-delay: 15s;
+    animation-duration: 22s;
+}
+
+.floating-element:nth-child(5) {
+    left: 90%;
+    animation-delay: 20s;
+    animation-duration: 28s;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.1;
+        transform: scale(1);
+    }
+    90% {
+        opacity: 0.1;
+    }
+    100% {
+        transform: translateY(-100vh) scale(0);
+        opacity: 0;
+    }
+}
+
+/* Noise texture overlay */
+.noise-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    animation: noiseMove 8s linear infinite;
+}
+
+@keyframes noiseMove {
+    0%, 100% { transform: translate(0, 0); }
+    25% { transform: translate(-5%, -5%); }
+    50% { transform: translate(-10%, 5%); }
+    75% { transform: translate(5%, -10%); }
+}

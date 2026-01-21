@@ -1,0 +1,86 @@
+<header
+  class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
+  <nav class="max-w-4xl mx-auto px-6 py-4">
+    <div class="flex items-center justify-between">
+      <a href="{{ '/' | relative_url }}" class="h-auto w-[170px]">
+        <img
+          src="/assets/lombokdev/images/logo.svg"
+          class="w-full h-auto"
+          decoding="async"
+          loading="lazy" />
+      </a>
+
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="/" class="text-gray-600 hover:text-gray-900 transition-colors"
+          >Home</a
+        >
+        <a
+          href="/events"
+          class="text-gray-600 hover:text-gray-900 transition-colors"
+          >Events</a
+        >
+        <!-- <a href="/projects" class="text-gray-600 hover:text-gray-900 transition-colors">Projects</a> -->
+        <a
+          href="/contributors"
+          class="text-gray-600 hover:text-gray-900 transition-colors"
+          >Contributors</a
+        >
+        <a
+          href="/history"
+          class="text-gray-600 hover:text-gray-900 transition-colors"
+          >History</a
+        >
+      </div>
+
+      <!-- Mobile menu button -->
+      <button
+        class="md:hidden p-2 text-gray-600 hover:text-gray-900"
+        onclick="toggleMobileMenu()">
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div
+      id="mobile-menu"
+      class="hidden md:hidden mt-4 pb-4 border-t border-gray-100">
+      <div class="flex flex-col space-y-4 pt-4">
+        <a href="/" class="text-gray-600 hover:text-gray-900 transition-colors"
+          >Home</a
+        >
+        <a
+          href="/events"
+          class="text-gray-600 hover:text-gray-900 transition-colors"
+          >Events</a
+        >
+        <!-- <a href="/projects" class="text-gray-600 hover:text-gray-900 transition-colors">Projects</a> -->
+        <a
+          href="/contributors"
+          class="text-gray-600 hover:text-gray-900 transition-colors"
+          >Contributors</a
+        >
+        <a
+          href="/history"
+          class="text-gray-600 hover:text-gray-900 transition-colors"
+          >History</a
+        >
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  function toggleMobileMenu() {
+    document.getElementById("mobile-menu").classList.toggle("hidden");
+  }
+</script>

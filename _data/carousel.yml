@@ -1,0 +1,34 @@
+# Carousel Configuration
+images:
+  - "assets/lombokdev/images/1.JPG"
+  - "assets/lombokdev/images/dengerpetuah.jpg"
+  - "assets/lombokdev/images/KECE2552.JPG" 
+  - "assets/lombokdev/images/KECE2608.JPG" 
+  - "assets/lombokdev/images/KECE2624.JPG" 
+  - "assets/lombokdev/images/KECE2639.JPG" 
+  - "assets/lombokdev/images/KECE2642.JPG" 
+  - "assets/lombokdev/images/KECE2663.JPG"
+  - "assets/lombokdev/images/ldm1.jpg"
+  - "assets/lombokdev/images/ldm2.jpg"
+
+# Optional captions for each image
+captions:
+  - "Lombok Dev Community Gathering"
+  - "Sharing Knowledge and Experiences"
+  - "Engaging Discussions"
+  - "Collaborative Learning"
+  - "Building Connections"
+  - "Innovative Ideas"
+  - "Tech Enthusiasts Unite"
+  - "Empowering Developers"
+  - "Inspiring Future Tech Leaders"
+  - "Fostering a Tech Ecosystem"
+
+# Carousel settings
+settings:
+  autoplay: true
+  interval: 4000  # milliseconds
+  show_dots: true
+  show_arrows: true
+  show_counter: true
+  lazy_loading: true

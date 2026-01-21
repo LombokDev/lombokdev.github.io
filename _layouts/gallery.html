@@ -1,0 +1,24 @@
+---
+layout: default
+---
+
+<h1 class="text-2xl font-bold mt-32 mb-4 ml-12 mr-12">{{ page.title }}</h1>
+
+<div class="grid grid-cols-2 md:grid-cols-3 gap-4 ml-12 mr-12">
+  {% comment %} Derive the source folder (e.g. "_galleries/meetupxyz/") from
+  page.path and only show files with image extensions. {% endcomment %} {%
+  assign gallery_dir = page.path | replace: 'index.md', '' %} {% assign
+  allowed_exts = "jpg,jpeg,png,gif,webp,avif,svg" | split: ',' %} {% for file in
+  site.static_files %} {% assign ext = file.extname | remove: '.' | downcase %}
+  {% if file.path contains gallery_dir and allowed_exts contains ext %} {%
+  assign file_url = file.path | replace: '_galleries', '/galleries' %}
+  <div class="rounded-xl overflow-hidden shadow-md">
+    <img
+      src="{{ file_url | relative_url }}"
+      alt="{{ page.title }}"
+      decoding="async"
+      loading="lazy"
+      class="w-full h-auto object-cover" />
+  </div>
+  {% endif %} {% endfor %}
+</div>
