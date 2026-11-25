@@ -3,6 +3,7 @@ layout: events
 title: "Lombok Dev Meetup: Student Edition #01"
 permalink: /events/meetupstudentediton01
 event_date: 2026-10-18
+banner: "../assets/lombokdev/images/meetupstudentediton01.webp"
 location: "Sport Center Universitas Bumigora"
 duration: "07.00–12.15 WITA (selesai)"
 description: "Lombok Dev Meetup: Student Edition #01 telah berlangsung pada 18 Oktober 2026. Mahasiswa dari UBG, UNRAM, UMMAT, dan UNHAZ berbagi pengalaman teknis dan membangun jejaring mahasiswa IT lintas kampus di Lombok."
