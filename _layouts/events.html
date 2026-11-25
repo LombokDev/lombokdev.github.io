@@ -52,6 +52,13 @@ layout: default
     append: ".jpg" %} {% assign file_png = "../assets/lombokdev/speakers/" |
     append: base | append: ".png" %}
 
+    {% if sp.photo == false %}
+    <div class="rounded-xl border border-gray-200 p-4">
+      <h3 class="font-semibold">{{ sp.name | escape }}</h3>
+      <p class="text-sm text-gray-700 mt-1">{{ sp.campus | escape }}</p>
+      <p class="text-gray-700 mt-3">{{ sp.topic | escape }}</p>
+    </div>
+    {% else %}
     <div class="relative rounded-xl overflow-hidden shadow-lg">
       <img
         src="{{ file_webp }}"
@@ -86,9 +93,14 @@ layout: default
         {% endif %}
       </div>
     </div>
+    {% endif %}
     {% endfor %}
   </div>
-  {% endif %} {% if page.registration_url %}
+  {% endif %}
+
+  {{ content }}
+
+  {% if page.registration_url %}
   <a
     href="{{ page.registration_url }}"
     class="px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
@@ -103,7 +115,7 @@ layout: default
   {% endif %}
 
   <!-- Registration List -->
-  <!-- 
+  <!--
   <section id="registration-list" class="mt-10">
     <h2 class="text-2xl font-semibold mb-3">Registered Participants</h2>
     <p id="reg-loading" class="text-gray-500">Loading...</p>
@@ -117,12 +129,14 @@ layout: default
       </thead>
       <tbody id="reg-body" class="divide-y divide-gray-200"></tbody>
     </table>
-  </section> 
+  </section>
   -->
 </article>
 
 <script>
   document.addEventListener("DOMContentLoaded", async () => {
+    if (!document.getElementById("reg-loading")) return;
+
     const eventId = "{{ page.event_id }}"; // should be defined in front matter
   });
 </script>
