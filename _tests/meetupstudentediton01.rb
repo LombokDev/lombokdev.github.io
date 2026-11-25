@@ -13,6 +13,11 @@ raise "Missing photos must not load" unless event.fetch("speakers").all? { |spea
 site = ARGV.fetch(0, File.join(root, "_site"))
 html = File.read(File.join(site, "events/meetupstudentediton01.html"))
 raise "Event body not rendered" unless html.include?("Tentang kegiatan") && html.include?("Liputan media")
+raise "Contributor heading lost" unless html.include?(">Contributors</h2>")
+raise "Merge markers remain" if html.match?(/^(<<<<<<<|=======|>>>>>>>)/)
+legacy = File.read(File.join(site, "events/2024-09-15-lmd12.html"))
+raise "WebP speaker photos lost" unless legacy.match?(/src="[^\"]*speakers\/[^\"]+\.webp"/)
+raise "Legacy speaker layout changed" if legacy.include?("<h3 class=\"font-semibold\">")
 event.fetch("speakers").each do |speaker|
   raise "Speaker missing: #{speaker['name']}" unless html.include?(speaker.fetch("name"))
   raise "Campus missing: #{speaker['campus']}" unless html.include?(speaker.fetch("campus"))
