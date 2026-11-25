@@ -22,6 +22,12 @@ event.fetch("speakers").each do |speaker|
   raise "Speaker missing: #{speaker['name']}" unless html.include?(speaker.fetch("name"))
   raise "Campus missing: #{speaker['campus']}" unless html.include?(speaker.fetch("campus"))
 end
+raise "Student Edition banner missing" unless html.include?('src="../assets/lombokdev/images/meetupstudentediton01.webp"')
+meetup13 = File.read(File.join(site, "events/ldm13.html"))
+raise "Meetup 13 banner missing" unless meetup13.include?('src="../assets/lombokdev/images/ldm13.webp"')
+%w[meetupstudentediton01 ldm13].each do |name|
+  raise "Banner file missing: #{name}" unless File.file?(File.join(site, "assets/lombokdev/images/#{name}.webp"))
+end
 raise "Unexpected speaker photo" if html.include?("../assets/lombokdev/speakers/")
 raise "Unexpected registration link" if html.match?(/href=["'][^"']*\/register\//)
 listing = File.read(File.join(site, "events/index.html"))

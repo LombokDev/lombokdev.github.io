@@ -2,7 +2,7 @@
 layout: events
 title: "Lombok Dev Meetup #13"
 event_date: 2025-12-21
-banner: "../assets/lombokdev/images/ldm12.jpg"
+banner: "../assets/lombokdev/images/ldm13.webp"
 location: "-"
 duration: "1 Day"
 
