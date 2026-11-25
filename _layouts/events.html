@@ -47,6 +47,13 @@ layout: default
         {% assign file_jpg  = "../assets/lombokdev/speakers/" | append: base | append: ".jpg" %}
         {% assign file_png  = "../assets/lombokdev/speakers/" | append: base | append: ".png" %}
 
+        {% if sp.photo == false %}
+          <div class="rounded-xl border border-gray-200 p-4">
+            <h3 class="font-semibold">{{ sp.name | escape }}</h3>
+            <p class="text-sm text-gray-700 mt-1">{{ sp.campus | escape }}</p>
+            <p class="text-gray-700 mt-3">{{ sp.topic | escape }}</p>
+          </div>
+        {% else %}
         <div class="relative rounded-xl overflow-hidden shadow-lg">
           <img src="{{ file_jpeg }}"
               alt="{{ sp.name | escape }}"
@@ -68,12 +75,15 @@ layout: default
             {% endif %}
           </div>
         </div>
+        {% endif %}
       {% endfor %}
     </div>
   {% endif %}
 
 
 
+
+  {{ content }}
 
   {% if page.registration_url %}
     <a href="{{ page.registration_url }}" class="px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Register</a>
@@ -106,6 +116,8 @@ layout: default
 
 <script>
   document.addEventListener("DOMContentLoaded", async () => {
+    if (!document.getElementById("reg-loading")) return;
+
     const eventId = "{{ page.event_id }}"; // should be defined in front matter
     const apiUrl = "https://xrxfvavgbcphhywznrfq.supabase.co/functions/v1/get-attendance"; 
 
