@@ -1,0 +1,44 @@
+<section id="projects" class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-12">Featured Projects</h2>
+        
+        <div class="space-y-8">
+            {% for project in site.data.projects.projects %}
+            {% if project.featured %}
+            <div class="project-card group">
+                <div class="flex flex-col md:flex-row md:items-center justify-between p-6 bg-white rounded-lg border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all duration-300">
+                    <div class="flex-1">
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            {% for tech in project.technologies %}
+                            <span class="inline-block text-xs font-medium text-gray-600 bg-gray-100 px-2 py-1 rounded">
+                                {{ tech }}
+                            </span>
+                            {% endfor %}
+                        </div>
+                        
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                            {{ project.title }}
+                        </h3>
+                        
+                        <p class="text-gray-600 leading-relaxed">
+                            {{ project.description }}
+                        </p>
+                    </div>
+                    
+                    <div class="mt-4 md:mt-0 md:ml-6">
+                        <a href="{{ project.url }}" 
+                           class="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium transition-colors"
+                           {% if project.url contains 'http' %}target="_blank" rel="noopener noreferrer"{% endif %}>
+                            View Project
+                            <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>

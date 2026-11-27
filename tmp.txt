@@ -1,0 +1,57 @@
+
+#### test untuk certificate generator
+
+
+curl -X POST "https://xrxfvavgbcphhywznrfq.supabase.co/functions/v1/attend-event" \
+  -H "Content-Type: application/json" \
+  -H "apikey: YOUR_ANON_OR_SERVICE_ROLE_KEY" \
+  -d '{
+    "event_id": "1d4cf6d7-2a63-4e1c-9f43-7a6b4f5a9e1d",
+    "google_account_id": "google-12345"
+  }'
+
+
+  curl -X POST \
+  'https://xrxfvavgbcphhywznrfq.supabase.co/functions/v1/get-certificate' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "user_id": "google-12345",
+    "event_id": "1d4cf6d7-2a63-4e1c-9f43-7a6b4f5a9e1d"
+  }'
+
+curl -X POST \
+  'https://xrxfvavgbcphhywznrfq.supabase.co/functions/v1/get-certificate' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "user_id": "117136972624263020014",
+    "event_id": "26b5ada4-8808-45ed-90ca-c66301221b33"
+  }'
+
+
+
+  curl -X POST \
+  'https://xrxfvavgbcphhywznrfq.supabase.co/functions/v1/check-certificate' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "certificate_id": "aHP4Nq7qq35UbmCUOsa5"
+  }'
+
+
+curl "https://xrxfvavgbcphhywznrfq.supabase.co/functions/v1/check-certificate?certificate-id=aHP4Nq7qq35UbmCUOsa5"
+
+
+
+curl -X POST \
+  'https://xrxfvavgbcphhywznrfq.supabase.co/functions/v1/my-certificates' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "user_id": "google-12345",
+    "event_id": "1d4cf6d7-2a63-4e1c-9f43-7a6b4f5a9e1d"
+  }'
+
+curl -X POST \
+  'https://xrxfvavgbcphhywznrfq.supabase.co/functions/v1/my-certificates' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "user_id": "117136972624263020014"
+  }'

@@ -1,0 +1,126 @@
+---
+layout: default
+---
+
+<main class="bg-indigo-50 w-full py-16">
+  <div class="max-w-5xl mx-auto px-4 mt-20">
+    <h1 class="text-4xl font-bold text-center text-gray-800 mb-12">
+      {{ page.title }}
+    </h1>
+
+    <section class="relative">
+      <!-- Center vertical line (desktop only) -->
+      <div
+        class="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-indigo-300 -translate-x-1/2"></div>
+
+      {% assign raw = page.content | split: '[start]' | last | split: '[end]' |
+      first | strip %} {% assign chunks = raw | split: '---' %}
+
+      <div class="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-8">
+        {% for c in chunks %} {% assign block = c | strip %} {% if block
+        contains 'event:' %} {% assign lines = block | newline_to_br | split:
+        '<br />' %} {% assign event_title = '' %} {% assign event_date = '' %}
+        {% assign event_image = '' %} {% assign event_position = 'left' %} {%
+        assign event_description = '' %} {% assign event_url = '' %} {% for line
+        in lines %} {% assign l = line | strip %} {% if l == '' %}{% continue
+        %}{% endif %} {% if l contains 'event:' %} {% assign event_title = l |
+        remove_first: 'event:' | strip %} {% elsif l contains 'date:' %} {%
+        assign event_date = l | remove_first: 'date:' | strip %} {% elsif l
+        contains 'image:' %} {% assign event_image = l | remove_first: 'image:'
+        | strip %} {% elsif l contains 'position:' %} {% assign event_position =
+        l | remove_first: 'position:' | strip | downcase %} {% elsif l contains
+        'description:' %} {% assign event_description = l | remove_first:
+        'description:' | strip %} {% elsif l contains 'url:' %} {% assign
+        event_url = l | remove_first: 'url:' | strip %} {% endif %} {% endfor %}
+        {% if event_position == "right" %}
+        <!-- description on left -->
+        <div class="relative md:pr-12 mb-10 md:mb-16">
+          {% if event_description != '' %}
+          <div class="bg-indigo-100 rounded-2xl p-5 shadow-md relative">
+            <p class="text-gray-700 mb-3">{{ event_description }}</p>
+            {% if event_url != '' %}
+            <a
+              href="{{ event_url }}"
+              target="_blank"
+              rel="noopener"
+              class="inline-block bg-indigo-500 text-white text-sm px-4 py-2 rounded-lg hover:bg-indigo-600 transition">
+              External Link
+            </a>
+            {% endif %}
+            <!-- little tail -->
+            <span
+              class="absolute right-[-6px] top-6 w-4 h-4 bg-indigo-100 rotate-45"></span>
+          </div>
+          {% endif %}
+        </div>
+
+        <!-- image card on right -->
+        <div class="relative md:pl-12 mb-10 md:mb-16">
+          <span
+            class="hidden md:block absolute left-0 top-7 w-4 h-4 bg-indigo-500 rounded-full border border-white"></span>
+          <article class="bg-white shadow-lg rounded-2xl overflow-hidden">
+            {% if event_image != '' %}
+            <img
+              src="{{ event_image }}"
+              alt="{{ event_title }}"
+              decoding="async"
+              loading="lazy"
+              class="w-full h-56 object-cover" />
+            {% endif %}
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-gray-800">
+                {{ event_title }}
+              </h3>
+              <p class="text-gray-500 text-sm mt-1">{{ event_date }}</p>
+            </div>
+          </article>
+        </div>
+
+        {% else %}
+        <!-- image card on left -->
+        <div class="relative md:pr-12 mb-10 md:mb-16">
+          <span
+            class="hidden md:block absolute right-0 top-7 w-4 h-4 bg-indigo-500 rounded-full border border-white"></span>
+          <article class="bg-white shadow-lg rounded-2xl overflow-hidden">
+            {% if event_image != '' %}
+            <img
+              src="{{ event_image }}"
+              alt="{{ event_title }}"
+              decoding="async"
+              loading="lazy"
+              class="w-full h-56 object-cover" />
+            {% endif %}
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-gray-800">
+                {{ event_title }}
+              </h3>
+              <p class="text-gray-500 text-sm mt-1">{{ event_date }}</p>
+            </div>
+          </article>
+        </div>
+
+        <!-- description on right -->
+        <div class="relative md:pl-12 mb-10 md:mb-16">
+          {% if event_description != '' %}
+          <div class="bg-indigo-100 rounded-2xl p-5 shadow-md relative">
+            <p class="text-gray-700 mb-3">{{ event_description }}</p>
+            {% if event_url != '' %}
+            <a
+              href="{{ event_url }}"
+              target="_blank"
+              rel="noopener"
+              class="inline-block bg-indigo-500 text-white text-sm px-4 py-2 rounded-lg hover:bg-indigo-600 transition">
+              External Link
+            </a>
+            {% endif %}
+            <!-- little tail -->
+            <span
+              class="absolute left-[-6px] top-6 w-4 h-4 bg-indigo-100 rotate-45"></span>
+          </div>
+          {% endif %}
+        </div>
+        {% endif %} {% endif %} {% endfor %}
+      </div>
+    </section>
+  </div>
+</main>
